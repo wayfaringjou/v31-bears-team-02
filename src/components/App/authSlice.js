@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-const LOGIN_FAIL = "LOGIN_FAIL";
-const LOGOUT = "LOGOUT";
-
-
 export const authSlice = createSlice({
-  name: 'isAuthenticated',
+  name: 'authentication',
   initialState: {
-    value: false
+    isAuthenticated: false
   },
   reducers: {
-
+    loginSuccess: (state) => { state.isAuthenticated = true },
+    logout: (state) => { state.isAuthenticated = false }
   }
 })
+
+export const { loginSuccess, logout } = authSlice.actions;
+
+export default authSlice.reducer;

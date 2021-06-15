@@ -1,4 +1,4 @@
-const LOGINPATH = 'localhost:4001/auth';
+const LOGINPATH = 'http://localhost:4001/auth/login';
 
 const credentials = ({ username = '', password = '' } = {}) => ({
   data: {
@@ -6,7 +6,7 @@ const credentials = ({ username = '', password = '' } = {}) => ({
     password,
     path: LOGINPATH,
   },
-  getToken: async () => {
+  async getToken () {
     try {
       const { username, password, path } = this.data;
       const res = await fetch(path, {
@@ -27,3 +27,4 @@ const credentials = ({ username = '', password = '' } = {}) => ({
     }
   }
 })
+export default credentials;
